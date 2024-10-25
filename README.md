@@ -73,9 +73,7 @@ Step 6: Add a GitHub Actions workflow for releasing from `main` branch.
 name: Create Release
 
 on:
-  push:
-    branches:
-      - "main"
+  workflow_dispatch:
 
 env:
   NODE_VERSION: "20.x"
@@ -143,9 +141,7 @@ approach.
 name: Create Release
 
 on:
-  push:
-    branches:
-      - "main"
+  workflow_dispatch:
 
 env:
   NODE_VERSION: "20.x"
