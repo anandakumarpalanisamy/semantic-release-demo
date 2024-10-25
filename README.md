@@ -134,7 +134,8 @@ approach.
 - Add a Private Key from the App page, by scrolling to the section `Private Keys`.
 - You get a Private Key downloaded to the machine.
 - Copy the `APP ID` from the top of the page.
-- Now, save these to as secrets in Actions -> Secrets in `RELEASE_APP_PRIVATE_KEY` and `RELEASE_APP_ID`.
+- Now, save these to as secrets in Actions -> Secrets in `RELEASE_APP_PRIVATE_KEY` and `RELEASE_APP_ID` respectively.
+- Install the App to your Github Account. (P.S: Please grant access to repositories with caution).
 
 ### Amend the GitHub Actions workflow as follows;
 
