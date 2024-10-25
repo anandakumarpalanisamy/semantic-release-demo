@@ -11,11 +11,17 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     steps:
+      - name: "Generate token"
+        id: generate_token
+        uses: tibdex/github-app-token@v2
+        with:
+          app_id: ${{ secrets.RELEASE_APP_ID }}
+          private_key: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ needs.generate-token.outputs.token }}
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -27,6 +33,6 @@ jobs:
         id: semantic-release
         run: npx semantic-release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ needs.generate-token.outputs.token }}
     outputs:
       version: ${{ steps.semantic-release.outputs.nextVersion }}
