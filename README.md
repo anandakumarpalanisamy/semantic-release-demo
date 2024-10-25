@@ -161,7 +161,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ needs.generate-token.outputs.token }}
+          token: ${{ steps.generate-token.outputs.token }}
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -173,7 +173,7 @@ jobs:
         id: semantic-release
         run: npx semantic-release
         env:
-          GITHUB_TOKEN: ${{ needs.generate-token.outputs.token }}
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
     outputs:
       version: ${{ steps.semantic-release.outputs.nextVersion }}
 ```
